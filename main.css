@@ -1,0 +1,196 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+::placeholder {
+    color: var(--c-text);
+}
+
+:root {
+    --c-orange:                 #B85053;
+    --c-text:                   #ffffff; 
+    --c-starbg:                 #211333;
+    --c-starbggradient-end:     #662F40;
+    --c-rightside-bg:           #843D4E;
+    --c-rightsidegradient-end:  #CC5556;
+    --c-hover:                  #BFA5A4;
+
+    --f-oxygenmono: 'Oxygen Mono', monospace;
+    --f-robotomono: 'Roboto Mono', monospace;
+
+    --border-r: 1.25rem;
+    --px-10: 0.625rem;
+    --px-20: 1.25rem;
+    --px-24: 1.5rem;
+    --px-30: 1.875rem;
+    --px-36: 2.25rem;
+    --px-40: 2.5rem;
+    --px-160: 10rem;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+input, 
+button, 
+p {
+    letter-spacing: 3px;
+}
+
+input:hover {
+    cursor: text;
+}
+button:hover, p {
+    cursor: pointer;
+}
+
+.holder {
+    height: 70%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--border-r);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.holder__leftside {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--px-30);
+    background-image: url(./img-svg/Starbg.jpg);
+    background-size: cover;
+    z-index: -2;
+}
+
+.holder__leftside-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right top, var(--c-starbg), var(--c-starbggradient-end));
+    opacity: 90%;
+    z-index: -1;
+}
+
+.holder__leftside-moon {
+    height: 40%;
+    z-index: 1;
+    animation: upAndDown 5s linear 0s infinite alternate forwards;
+}
+
+@keyframes upAndDown {
+    from{transform: translateY(0px);}
+    to{transform: translateY(-30px);}
+}
+
+.holder__leftside-h1 {
+    font-family: var(--f-oxygenmono);
+    font-weight: 100;
+    font-size: 250%;
+    letter-spacing: var(--px-36);
+    color: var(--c-orange);
+}
+
+
+/* rigth side  */
+.holder__rightside {
+    background: linear-gradient(to right top, var(--c-rightside-bg), var(--c-rightsidegradient-end));
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.holder__rightside__forms {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--px-20);
+}
+
+.holder__rightside__forms-input {
+    border: none;
+    border-bottom: 1px solid var(--c-text);
+    background: rgba(0,0,0,0);
+    font-weight: 200;
+    font-family: var(--f-robotomono);
+    font-size: var(--px-24);
+    padding: var(--px-10);
+    color: var(--c-text);
+    transition: 0.4s all;
+}
+
+.holder__rightside__forms-input:hover {
+    border-bottom: 1px solid var(--c-hover);
+}
+
+.holder__rightside__forms__buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.holder__rightside__forms__buttons-button {
+    border: 1px solid var(--c-text);
+    background: rgba(0,0,0,0);
+    font-weight: 200;
+    font-family: var(--f-robotomono);
+    font-size: var(--px-24);
+    padding: var(--px-10) var(--px-30) var(--px-10) var(--px-30);
+    color: var(--c-text);
+    transition: 0.4s all;
+}
+.holder__rightside__forms__buttons-button:hover {
+    border: 1px solid var(--c-hover);
+    color: var(--c-hover);
+}
+
+.holder__rightside-forgottext {
+    font-family: var(--f-robotomono);
+    font-size: var(--px-24);
+    font-weight: 200;
+    color: var(--c-text);
+}
+
+.holder__rightside-forgottext:hover:after {
+    content: '';
+    height: 1%;
+    display: block;
+    background-color: var(--c-hover);
+    animation-name: widthChange;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes widthChange {
+    from{width: 0%;}
+    to{width: 100%;}
+}
+
+.holder__rightside-darklogo {
+    display: none;
+}
+
+@media screen and (min-width: 2500px) {
+    .holder__rightside {
+        justify-content: flex-end;
+        gap: var(--px-160);
+    }
+    .holder__rightside-darklogo {
+        display: block;
+    }
+}
