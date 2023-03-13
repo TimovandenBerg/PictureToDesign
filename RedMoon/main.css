@@ -70,7 +70,7 @@ button:hover, p {
     justify-content: center;
     flex-direction: column;
     gap: var(--px-30);
-    background-image: url(./img-svg/Starbg.jpg);
+    background-image: url(../img-svg/RedMoon/Starbg.jpg);
     background-size: cover;
     z-index: -2;
 }
